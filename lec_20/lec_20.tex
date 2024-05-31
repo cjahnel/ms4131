@@ -1,0 +1,86 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{amsmath, amssymb}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+    \ifdim\lastskip<1.5em \hskip-\lastskip
+    \hskip1.5em plus0em minus0.5em \fi \nobreak
+    \vrule height0.75em width0.5em depth0.25em\fi}
+\newcommand{\keyword}[1]{\textbf{#1}}
+
+\title{MS4131 Lecture 20: Diagonalization}
+\author{Kevin Moroney}
+\date{30 November 2023}
+
+\begin{document}
+    \maketitle
+    \section{Diagonalization}
+    \begin{definition}
+        A square matrix $A$ is said to be \keyword{diagonalizable} if there exists an
+        invertible matrix $P$ such that $P^{-1}AP$ is diagonal.
+    \end{definition}
+    \begin{theorem}
+        If $A$ is an $n \times n$ matrix, then the following are equivalent:
+        \begin{enumerate}
+            \item $A$ is diagonalizable
+            \item $A$ has $n$ linearly independent eigenvectors
+        \end{enumerate}
+    \end{theorem}
+    \begin{remark}
+        If $A$ does not have $n$ linearly independent eigenvectors, it is not
+        diagonalizable.
+    \end{remark}
+    \subsection*{Application}
+    $A^n = (PDP^{-1})^n \because P^{-1}AP = D \implies A = PDP^{-1} \therefore A^n = PD^nP^{-1}$
+    \section*{Orthogonal diagonalization}
+    \begin{definition}
+        A square matrix $A$ with the property $A^{-1} = A^T$ is said to be an
+        \keyword{orthogonal matrix}.
+    \end{definition}
+    \begin{definition}
+        A square matrix $A$ is \keyword{orthogonally diagonalizable} if there is an
+        orthogonal matrix $P$ such that $P^{-1}AP = P^TAP$ is diagonal.
+        The matrix $P$ is said to orthogonally diagonalize $A$.
+    \end{definition}
+    \begin{remark}
+        If $A$ is orthogonally diagonalizable then $P^{-1}AP$ is diagonal
+        where $P$ is orthogonal;\\
+        that is $P^TP = I$ or if $p_i$ for $i = 1, 2, \dots, n$ are the columns of $P$
+        then
+        \[
+            p_i^Tp_j = \delta_{ij} =
+            \begin{cases}
+                1 \quad \text{ if } i = j \\
+                0 \quad \text{ if } i \ne j \\
+            \end{cases}
+        \]
+        that is, the columns of $P$ (the eigenvectors of $A$) are
+        \keyword{orthonormal} and so $A$ has $n$ orthonormal eigenvectors.\\
+        Similarly if $A$ has $n$ orthonormal eigenvectors $p_1, p_2, \dots, p_n$ then
+        the matrix $P$, whose columns are these eigenvectors,
+        diagonalizes $A$ orthogonally.\\
+        Thus $A$ is orthogonally diagonalizable if and only if $A$ has $n$
+        orthonormal eigenvectors.
+    \end{remark}
+    \begin{theorem}
+        If $A$ is an $n \times n$ matrix, then $A$ is orthogonally diagonalizable if
+        and only if $A$ is symmetric.
+    \end{theorem}
+    \begin{theorem}
+        If $A$ is symmetric, then eigenvectors corresponding to different
+        eigenvalues are orthogonal.
+    \end{theorem}
+\end{document}

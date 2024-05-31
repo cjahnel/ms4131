@@ -1,0 +1,99 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{amsmath, amssymb}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+\newcommand{\keyword}[1]{\textbf{#1}}
+
+\title{MS4131 Lecture 19: Complex Eigenvalues and Linear Independence}
+\author{Kevin Moroney}
+\date{27 November 2023}
+
+\begin{document}
+    \maketitle
+    \section*{Complex eigenvalues}
+    \subsection*{Complex numbers}
+    A \keyword{complex number} $z \in \mathbb{C}$ takes the form
+    \[z = x + iy\]
+    where $x, y \in \mathbb{R}$ and $i = \sqrt{-1}$.\\
+    The \keyword{complex conjugate} of $z$ is $\bar{z} = x - iy$.\\
+    \subsection*{Modulus}
+    \[z\bar{z} = (x + iy)(x - iy) = x^2 + ixy - ixy + y^2 = x^2 + y^2\]
+    The \keyword{modulus} of $z$ is
+    \[r = |z| = \sqrt{z\bar{z}} = \sqrt{x^2 + y^2}\]
+    If the \keyword{imaginary part} of $z$ is zero; i.e., if $y = 0$:
+    \[|z| = \sqrt{x^2} = |x|\]
+    then the modulus is the \keyword{absolute value} of $x$ (where $x$ is the
+    \keyword{real part} of $z$).
+    \subsection*{Complex vectors and matrices}
+    Similarly a complex vector $u \in \mathbb{C}^n$ can be written as $u = v + iw$,
+    where $v$ and $w$ are real valued vectors.\\
+    The norm of the complex vector
+    \[
+        u = \begin{pmatrix}
+                u_1\\
+                u_2\\
+                \vdots\\
+                u_n
+            \end{pmatrix}
+    \]
+    is
+    \[
+        ||u|| = \sqrt{\sum_{i=1}^{n}u_i\bar{u_i}}
+        = \sqrt{u_1\bar{u_1} + u_2\bar{u_2} + \dots + u_n\bar{u_n}}
+    \]
+    \begin{remark}
+        If $\lambda$ is a complex eigenvalue of a real matrix $A$ then its
+        conjugate $\bar{\lambda}$ is also an eigenvalue.
+    \end{remark}
+    \begin{theorem}
+        If $A \in \mathbb{R}^{n \times n}$ is symmetric then all its eigenvalues are \keyword{real}.
+    \end{theorem}
+    \section*{Linear independence}
+    \begin{definition}
+        If $S = \{v_1, v_2, ..., v_r\}$ is a set of vectors, then the equation
+        \[k_1v_1 + k_2v_2 + ... + k_rv_r = 0\]
+        has \keyword{at least one solution}: $k_i = 0 \; \forall i$.\\
+        If there is no other solution, then $S$ is a linearly independent
+        set. Otherwise $S$ is linearly dependent.
+    \end{definition}
+    \begin{remark}
+        If $S$ is linearly dependent, then at least one of the scalars $\{k_i\}$ is
+        non-zero. Assume $k_j \neq 0$; then
+        \[v_j = -\frac{k_1}{k_j}v_1 - \frac{k_2}{k_j}v_2 - \dots - \frac{k_r}{k_j}v_r\]
+        i.e. $v_j$ is a linear combination of the other vectors in the set.
+    \end{remark}
+    \begin{remark}
+        2 vectors in $\mathbb{R}^2$ or $\mathbb{R}^3$ are lienarly dependent if and only if they
+        lie on the same line through the origin and 3 vectors in $\mathbb{R}^3$ are
+        linearly dependent if and only if they lie on the same plane
+        through the origin.
+    \end{remark}
+    \subsection*{Matrix with linearly independent columns}
+    Let $X$ be the matrix $(x_1, x_2, \dots, x_n)$ whose columns $x_1, x_2, \dots, x_n$
+    are linearly independent.\\
+    Let $k = \begin{pmatrix}
+                k_1\\
+                k_2\\
+                \vdots\\
+                k_n
+        \end{pmatrix}$. Then
+    \[X^Tk = k_1x_1 + k_2x_2 + \dots + k_nx_n = 0 \iff k = 0\]
+    Thus $X^T$ is invertible and so $X$ is invertible.
+\end{document}

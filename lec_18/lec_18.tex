@@ -1,0 +1,88 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{amsmath, amssymb}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+\newcommand{\keyword}[1]{\textbf{#1}}
+
+\title{MS4131 Lecture 18: Eigenvalues and eigenvectors}
+\author{Kevin Moroney}
+\date{23 November 2023}
+
+\begin{document}
+    \maketitle
+    If $A$ is an $n \times n$ matrix and $x$ is a vector in $\mathbb{R}^n$ (i.e. $x$ is a $n \times 1$
+    column vector), then the matrix product $Ax$ is also a vector in
+    $\mathbb{R}^n$ that we can denote by $y$ i.e.
+    \[Ax=y\]
+    Therefore $A$ is a \keyword{mapping} from $\mathbb{R}^n$ to $\mathbb{R}^n$:
+    \[A: \mathbb{R}^n \rightarrow \mathbb{R}^n.\]
+    \[x \mapsto Ax\]
+    \begin{remark}
+        It makes then sense to consider the following problem:\\
+        For which $x \in \mathbb{R}^n$ does there exist a scalar $\lambda \in \mathbb{R}$ such that
+        \[Ax = \lambda x?\]
+        What are the possible values of $\lambda$?
+    \end{remark}
+    \subsection*{Eigenvalues and eigenvectors}
+    \begin{definition}
+        Let $A$ be an $n \times n$ matrix. We say that a vector $x \in \mathbb{R}^n$ is an
+        \keyword{eigenvector} of $A$ if $x \neq 0$ and there exists $\lambda \in \mathbb{R}$ such that
+        \[Ax = \lambda x.\]
+        Such a $\lambda$ is called an \keyword{eigenvalue} of A
+        and $x$ is said to be an \keyword{eigenvector} of $A$ corresponding to $\lambda$.
+    \end{definition}
+    \subsection*{Finding the eigenvalues}
+    Let $A$ be an $n \times n$ matrix. We want to find $\lambda$ such that, for some
+    $x \in \mathbb{R}^n, x \neq 0$,
+    \[Ax = \lambda x\]
+    or equivalently
+    \[(A - \lambda I)x = 0\]
+    This is a homogeneous linear system; so we know that it either
+    has a unique solution $x = 0$ (which is not of interest here) or an
+    \keyword{infinite number of solutions} $x \neq 0$.\\
+    We can have non-zero solutions only if $\det(A - \lambda I) = 0$.\\
+    So we have the following:
+    \begin{definition}
+        $\lambda$ is an eigenvalue of $A$ if and only if
+        \[\det(A - \lambda I) = 0 \quad (\text{or} \det(\lambda I - A) = 0)\]
+        (Characteristic equation of A)\\
+        The \keyword{characteristic polynomial} of $A$ is the polynomial
+        \[P(\lambda) = \det(\lambda I - A).\]
+    \end{definition}
+    \begin{remark}
+        $P(\lambda)$ has the form
+        \[P(\lambda) = \lambda^n + c_1\lambda^{n-1} + \dots + c_{n-1}\lambda + c_n,\]
+        where $c_1, \dots, c_n$ are constants.\\
+        $P(\lambda)$ has therefore at most $n$ distinct solutions (by the
+        Fundamental Theorem of Algebra).\\
+        Therefore, if $A$ is an $n \times n$ matrix, then $A$ has at most $n$ distinct
+        eigenvalues.
+    \end{remark}
+    \subsection*{Finding the eigenvectors}
+    Suppose $\lambda$ is an eigenvalue of the matrix $A$ and we want to find
+    the eigenvectors of $A$ corresponding to $\lambda$.\\
+    $x$ is an eigenvector corresponding to $\lambda$ if $x \neq 0$ and
+    \[Ax = \lambda x\]
+    i.e.
+    \[(\lambda I - A)x = 0.\]
+    The set of eigenvectors of $A$ corresponding to $\lambda$ is therefore
+    given by
+   \[\{x \in \mathbb{R}^n \mid (\lambda I - A)x = 0, \quad x \neq 0\}.\]
+\end{document}
